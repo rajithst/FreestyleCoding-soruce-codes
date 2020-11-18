@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {UserService} from '../services/user.service'
 @Component({
   selector: 'app-login',
@@ -7,14 +8,19 @@ import {UserService} from '../services/user.service'
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: UserService) { }
+  constructor(private userService: UserService,private router:Router) { }
   
   ngOnInit() {
   }
 
   loginUser(){
     let status = true
-    this.authService.changeUserStatus(status)
+    this.userService.changeUserStatus(status)
+    if(this.userService.redirectURL){
+      this.router.navigateByUrl(this.userService.redirectURL)
+    }else{
+      this.router.navigate([""])
+    }
   }
 
 }
