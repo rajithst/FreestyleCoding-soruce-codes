@@ -16,4 +16,8 @@ export class AppComponent implements OnInit{
     let status = false
     this.authService.changeUserStatus(status)
   }
+
+  isLoggedIn(){
+    return this.authService.isLoggedIn()
+  }
 }
