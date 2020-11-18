@@ -1,4 +1,4 @@
-# FreestyleCoding SoruceCodes and Starter application
+# FreestyleCoding SoruceCodes
 Source codes for FreestyleCoding Youtube channel
 
 Project  | Playlist/Video | Reference Links
