@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {UserService} from "./services/user.service"
 @Component({
   selector: 'app-root',
@@ -8,13 +9,14 @@ import {UserService} from "./services/user.service"
 export class AppComponent implements OnInit{
   title = 'angular-router-guards';
   
-  constructor(private authService:UserService){}
+  constructor(private authService:UserService,private router:Router){}
   ngOnInit(){
     console.log("LOGIN_STATUS ",this.authService.isLoggedIn())
   }
   logout(){
     let status = false
     this.authService.changeUserStatus(status)
+    this.router.navigate([""])
   }
 
   isLoggedIn(){
