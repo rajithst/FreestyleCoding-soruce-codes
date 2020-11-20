@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from './user';
 
 @Component({
   selector: 'app-register',
@@ -6,14 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  user: Object = {};
-  constructor() { }
-
+  user: User = {username:"",email:"",password:""};
+  private currentUser: User = this.user
+  private OriginalUser = Object.assign({},this.currentUser)
   ngOnInit() {
   }
 
   submit(){
-    console.log(this.user)
+    console.log(JSON.stringify(this.OriginalUser))
+    console.log(JSON.stringify(this.OriginalUser)!== JSON.stringify(this.currentUser))
+  }
+
+  get isDirty(){
+    return JSON.stringify(this.OriginalUser)!== JSON.stringify(this.currentUser)
   }
 
 }

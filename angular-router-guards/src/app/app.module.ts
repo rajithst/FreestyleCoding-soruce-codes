@@ -11,11 +11,14 @@ import { DownloadsComponent } from './downloads/downloads.component';
 import { MakeCourseComponent } from './make-course/make-course.component';
 import { AuthGuard } from './services/auth.guard';
 import { FormsModule } from '@angular/forms';
+import { FormGuard } from './services/form.guard';
 
 
 const routes = [{path:"",component:HomeComponent},
                 {path:"login",component:LoginComponent},
-                {path:"register",component:RegisterComponent},
+                {path:"register",
+                component:RegisterComponent,
+                canDeactivate:[FormGuard]},
                 
                 { path:"courses",component:CoursesComponent},
                 { path:"downloads",
